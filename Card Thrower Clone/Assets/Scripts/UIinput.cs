@@ -23,24 +23,7 @@ public class UIinput : MonoBehaviour, IDragHandler, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         firstTouch = true;
-        GameManager.instance.gameStart = true;
-    }
-
-    private void OnEnable()
-    {
-        EventManager.AddHandler(GameEvent.OnStart, OnStart);
-    }
-
-    private void OnDisable()
-    {
-        EventManager.RemoveHandler(GameEvent.OnStart, OnStart);
-    }
-    private void OnStart()
-    {
-        firstTouch = true;
         EventManager.BroadCast(GameEvent.OnStart);
-        Debug.Log("Input onstart çalıştı");
     }
-
 
 }

@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 
 public enum GameEvent
-{
-    OnStart,
+{   
+     OnStart
 }
 
 public static class EventManager 

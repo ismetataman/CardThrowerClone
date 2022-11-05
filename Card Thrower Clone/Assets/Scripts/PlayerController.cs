@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameData data;
     Rigidbody rb;
     void Start()
     {
@@ -16,26 +17,11 @@ public class PlayerController : MonoBehaviour
         PlayerMovement();
     }
 
-    private void OnEnable()
-    {
-        EventManager.AddHandler(GameEvent.OnStart, OnStart);
-    }
-
-    private void OnDisable()
-    {
-        EventManager.RemoveHandler(GameEvent.OnStart, OnStart);
-    }
-
-    private void OnStart()
-    {
-        Update();
-    }
-
     private void PlayerMovement()
     {
         if(GameManager.instance.gameStart)
         {
-            transform.Translate(Vector3.forward * GameManager.instance.temporarySpeed * Time.deltaTime);
+            transform.Translate(Vector3.forward * data.speed * Time.deltaTime);
         }  
     }
 }

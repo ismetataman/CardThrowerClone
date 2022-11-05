@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
 
     private void OnStart()
     {
+        gameStart = true;
         Debug.Log("GameManeger OnStart");
     }
 
