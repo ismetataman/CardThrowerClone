@@ -3,7 +3,12 @@ using System.Collections.Generic;
 
 public enum GameEvent
 {   
-     OnStart
+    OnStart,
+    OnThrowRate,
+    OnCardRange,
+    OnSpreadShot,
+    OnDualShot
+
 }
 
 public static class EventManager 
@@ -30,7 +35,5 @@ public static class EventManager
         if(eventTable[gameEvent] != null)
             eventTable[gameEvent]();
     }
-
-
 
 }

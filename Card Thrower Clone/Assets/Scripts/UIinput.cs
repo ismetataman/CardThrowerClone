@@ -8,11 +8,11 @@ public class UIinput : MonoBehaviour, IDragHandler, IPointerDownHandler
 {
     public GameData data;
     public Transform playerTransform;
-    public bool firstTouch = false;
+    private bool clicked = false;
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (firstTouch)
+        if (GameManager.instance.gameStart)
         {
             Vector3 temporaryPos = playerTransform.position;
             temporaryPos.x = Mathf.Clamp(temporaryPos.x + eventData.delta.x * data.swipeSpeed, -1.8f, 1.8f);
@@ -22,8 +22,13 @@ public class UIinput : MonoBehaviour, IDragHandler, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        firstTouch = true;
-        EventManager.BroadCast(GameEvent.OnStart);
+        if(!clicked)
+        {
+            clicked = true;
+            EventManager.BroadCast(GameEvent.OnStart);
+        }
+        
     }
+    
 
 }
